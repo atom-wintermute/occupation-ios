@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "AOCellModel.h"
+
 static CGFloat const AOStatusBarHeight = 20.0;
 
 static NSUInteger const AOFieldSize = 18;
@@ -19,6 +21,12 @@ static CGFloat const AOCellSpacing = 1.0;
 static CGFloat const AOButtonOffset = 15.0;
 static CGFloat const AOButtonHeight = 44.0;
 static CGFloat const AOButtonSpacing = 1.0;
+
+@interface ViewController ()
+
+@property (nonatomic, strong) NSArray *cellMatrix;
+
+@end
 
 @implementation ViewController
 
@@ -43,18 +51,32 @@ static CGFloat const AOButtonSpacing = 1.0;
     CGFloat leftPosition = AOFieldMargin;
     CGFloat topPosition = AOFieldMargin + AOStatusBarHeight;
     
+    NSMutableArray *cellMatrix = [NSMutableArray new];
     for (NSUInteger i = 0; i < AOFieldSize; ++i) {
         leftPosition = AOFieldMargin;
+        NSMutableArray *cellRow = [NSMutableArray new];
+        
         for (NSUInteger j = 0; j < AOFieldSize; ++j) {
+            NSUInteger randomTag = arc4random_uniform(AOButtonCount);
+            
             CGRect frame = CGRectMake(leftPosition, topPosition, cellSize, cellSize);
             UIView *cell = [[UIView alloc] initWithFrame:frame];
-            cell.backgroundColor = [self generateRandomColor];
+            cell.backgroundColor = [self colorForIndex:randomTag];
             [self.view addSubview:cell];
             
+            AOCellModel *cellModel = [AOCellModel new];
+            cellModel.colorTag = randomTag;
+            cellModel.cellOwner = AOCellOwnerNeutral;
+            
+            [cellRow addObject:cellModel];
             leftPosition += cellSize + AOCellSpacing;
         }
+        
+        [cellMatrix addObject:[cellRow copy]];
         topPosition += cellSize + AOCellSpacing;
     }
+    
+    self.cellMatrix = [cellMatrix copy];
 }
 
 - (void)setupButtons {
@@ -65,10 +87,22 @@ static CGFloat const AOButtonSpacing = 1.0;
     for (NSUInteger i = 0; i < AOButtonCount; ++i) {
         CGRect frame = CGRectMake(leftPosition, topPosition, buttonWidth, AOButtonHeight);
         UIButton *button = [[UIButton alloc] initWithFrame:frame];
-        button.backgroundColor = [self colorForButtonWithIndex:i];
+        button.backgroundColor = [self colorForIndex:i];
+        button.tag = i;
+        [button addTarget:self
+                   action:@selector(pressedButton:)
+         forControlEvents:UIControlEventTouchDown];
         [self.view addSubview:button];
         
         leftPosition += buttonWidth + AOButtonSpacing;
+    }
+}
+
+#pragma mark - Actions 
+
+- (void)pressedButton:(UIButton *)sender {
+    for (NSUInteger i = 0; i < self.cellMatrix.count; ++i) {
+        NSArray *array = self.cellMatrix[i];
     }
 }
 
@@ -101,7 +135,7 @@ static CGFloat const AOButtonSpacing = 1.0;
     }
 }
 
-- (UIColor *)colorForButtonWithIndex:(NSUInteger)index {
+- (UIColor *)colorForIndex:(NSUInteger)index {
     switch (index) {
         case 0:
             return [UIColor yellowColor];

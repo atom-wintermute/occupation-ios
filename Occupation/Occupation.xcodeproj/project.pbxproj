@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AD1ACA51ECCE1EC007B580D /* AOCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD1ACA41ECCE1EC007B580D /* AOCellModel.m */; };
 		3AFDE8E11ECCC6FD00E36A93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDE8E01ECCC6FD00E36A93 /* main.m */; };
 		3AFDE8E41ECCC6FD00E36A93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDE8E31ECCC6FD00E36A93 /* AppDelegate.m */; };
 		3AFDE8E71ECCC6FD00E36A93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDE8E61ECCC6FD00E36A93 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AD1ACA31ECCE1EC007B580D /* AOCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCellModel.h; sourceTree = "<group>"; };
+		3AD1ACA41ECCE1EC007B580D /* AOCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCellModel.m; sourceTree = "<group>"; };
 		3AFDE8DC1ECCC6FD00E36A93 /* Occupation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Occupation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFDE8E01ECCC6FD00E36A93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3AFDE8E21ECCC6FD00E36A93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AD1ACA21ECCE139007B580D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AD1ACA31ECCE1EC007B580D /* AOCellModel.h */,
+				3AD1ACA41ECCE1EC007B580D /* AOCellModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3AFDE8D31ECCC6FD00E36A93 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,7 @@
 		3AFDE8DE1ECCC6FD00E36A93 /* Occupation */ = {
 			isa = PBXGroup;
 			children = (
+				3AD1ACA21ECCE139007B580D /* Model */,
 				3AFDE8E21ECCC6FD00E36A93 /* AppDelegate.h */,
 				3AFDE8E31ECCC6FD00E36A93 /* AppDelegate.m */,
 				3AFDE8E51ECCC6FD00E36A93 /* ViewController.h */,
@@ -214,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFDE8E71ECCC6FD00E36A93 /* ViewController.m in Sources */,
+				3AD1ACA51ECCE1EC007B580D /* AOCellModel.m in Sources */,
 				3AFDE8E41ECCC6FD00E36A93 /* AppDelegate.m in Sources */,
 				3AFDE8E11ECCC6FD00E36A93 /* main.m in Sources */,
 			);
@@ -412,6 +426,7 @@
 				3AFDE9001ECCC6FD00E36A93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3AFDE9011ECCC6FD00E36A93 /* Build configuration list for PBXNativeTarget "OccupationTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +435,7 @@
 				3AFDE9031ECCC6FD00E36A93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
